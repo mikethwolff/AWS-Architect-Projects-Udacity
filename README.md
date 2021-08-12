@@ -12,7 +12,23 @@ In this project you will create highly available solutions to common use cases. 
 
 There will be three parts to this project:
 
-* Data Durability And Recovery
+** Part 1:
+* Data Durability And Recovery:
 Pick two AWS regions. An active region and a standby region. Use CloudFormation to create one VPC in each region.
+* Highly durable RDS Database:
+1. Create a new RDS Subnet group in the active and standby region using private subnets.
+2. Create a new MySQL, multi-AZ database in the active region
+Availability Estimate
+
+* Demonstrate normal usage
+1. Create an EC2 keypair in the region
+2. Launch an Amazon Linux EC2 instance in the active region. Configure the instance to use the VPC's public subnet and security group ("UDARR-Application").
+3. SSH to the instance and connect to the "udacity" database in the RDS instance.
+4. Verify that you can create a table, insert data, and read data from the database.
+5. You have now demonstrated that you can read and write to the primary database
+
+* Monitor database: 
+1. Observe the “DB Connections” to the database and how this metric changes as you connect to the database
+2. Observe the “Replication” configuration with your multi-region read replica.
 
 **Solution:** [Deploy a high-availability web app using CloudFormation](https://github.com/mikethwolff/...))
