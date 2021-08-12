@@ -11,9 +11,8 @@ For Udacity Honor Code please follow this link: [Udacity Honor Code](https://uda
 In this project you will create highly available solutions to common use cases. You will build a Multi-AvailabilityZone, Multi-Region database and show how to use it in multiple geographically separate AWS regions. You will also build a website hosting solution that is versioned so that any data destruction and accidents can be quickly and easily undone.
 
 There will be three parts to this project:
-Data Durability And Recovery
 
-* Diagram: You'll first develop a [diagram](https://github.com/mikethwolff/Cloud-DevOps-Engineer-Projects-Udacity/tree/main/Deploy%20a%20high-availability%20web%20app%20using%20CloudFormation%20(IAC)) that you can present as part of your portfolio and as a visual aid to understand the CloudFormation script.
-* [Script](https://github.com/mikethwolff/Cloud-DevOps-Engineer-Projects-Udacity/tree/main/Deploy%20a%20high-availability%20web%20app%20using%20CloudFormation%20(IAC)) (Template and Parameters): The second part is to interpret the instructions and create a matching CloudFormation script.
+* Data Durability And Recovery
+Pick two AWS regions. An active region and a standby region. Use CloudFormation to create one VPC in each region.
 
-**Solution:** [Deploy a high-availability web app using CloudFormation](https://github.com/mikethwolff/Cloud-DevOps-Engineer-Projects-Udacity/tree/main/Deploy%20a%20high-availability%20web%20app%20using%20CloudFormation%20(IAC))
+**Solution:** [Deploy a high-availability web app using CloudFormation](https://github.com/mikethwolff/...))
