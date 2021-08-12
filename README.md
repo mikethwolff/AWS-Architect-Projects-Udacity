@@ -12,7 +12,7 @@ In this project you will create highly available solutions to common use cases. 
 
 There will be three parts to this project:
 
-** Part 1:
+** Part 1: **
 * Data Durability And Recovery:
 Pick two AWS regions. An active region and a standby region. Use CloudFormation to create one VPC in each region.
 * Highly durable RDS Database:
