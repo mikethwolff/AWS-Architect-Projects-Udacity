@@ -12,13 +12,17 @@ In this project you will create highly available solutions to common use cases. 
 
 There will be three parts to this project:
 
-** Part 1: **
+**Part 1:**
 * Data Durability And Recovery:
-Pick two AWS regions. An active region and a standby region. Use CloudFormation to create one VPC in each region.
+1. Pick two AWS regions. An active region and a standby region. 
+2. Use CloudFormation to create one VPC in each region.
+
 * Highly durable RDS Database:
 1. Create a new RDS Subnet group in the active and standby region using private subnets.
 2. Create a new MySQL, multi-AZ database in the active region
-Availability Estimate
+
+* Availability Estimate
+1. Describing the achievable Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for this Multi-AZ, multi-region database.
 
 * Demonstrate normal usage
 1. Create an EC2 keypair in the region
