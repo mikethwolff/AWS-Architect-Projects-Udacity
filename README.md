@@ -336,6 +336,7 @@ Source: https://aws.amazon.com/blogs/database/amazon-rds-under-the-hood-single-a
 
 **Solution:**
 
-![alt text]()
+![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/monitoring_connections.png)
+![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/monitoring_replication.png)
 
 **Link to project 1 solution:** [Design for Availability, Reliability, and Resiliency](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/README.md))
