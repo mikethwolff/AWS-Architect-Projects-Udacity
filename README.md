@@ -328,7 +328,176 @@ Source: https://aws.amazon.com/blogs/database/amazon-rds-under-the-hood-single-a
 
 **Solution:**
 
-![alt text]()
+logfile_primary.txt
+```
+[root@ip- ec2-user]# mysql -h [db Endpoint ] -P 3306 -u admin -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 131
+Server version: 8.0.23 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> CREATE DATABASE TestingPrimary;
+Query OK, 1 rows affected (0.00 sec)
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| TestingPrimary     |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+6 rows in set (0.00 sec)
+
+MySQL [(none)]> use TestingPrimary
+Database changed
+
+MySQL [TestingPrimary]> CREATE TABLE IF NOT EXISTS testing (  test_id INT AUTO_INCREMENT,  test_content VARCHAR(255) NOT NULL,  PRIMARY KEY (test_id) );
+Query OK, 0 rows affected (0.07 sec)
+
+MySQL [TestingPrimary]> show tables
+    -> ;
++--------------------------+
+| Tables_in_TestingPrimary |
++--------------------------+
+| testing                  |
++--------------------------+
+1 row in set (0.00 sec)
+
+MySQL [TestingPrimary]> INSERT INTO testing (test_content) VALUES ('Still testing');
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [TestingPrimary]> SELECT * FROM testing;
++---------+---------------+
+| test_id | test_content  |
++---------+---------------+
+|       1 | Still testing |
++---------+---------------+
+1 row in set (0.00 sec)
+
+MySQL [TestingPrimary]>
+
+```
+
+logfile_secondary_before_promote.txt
+```
+[root@ip- ec2-user]# mysql -h [db Endpoint ] -P 3306 -u admin -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 119
+Server version: 8.0.23 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| TestingPrimary     |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+6 rows in set (0.01 sec)
+
+MySQL [(none)]> use TestingPrimary
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [TestingPrimary]> show tables;
++--------------------------+
+| Tables_in_TestingPrimary |
++--------------------------+
+| testing                  |
++--------------------------+
+1 row in set (0.00 sec)
+
+MySQL [TestingPrimary]> SELECT * FROM testing;
++---------+---------------+
+| test_id | test_content  |
++---------+---------------+
+|       1 | Still testing |
++---------+---------------+
+1 row in set (0.00 sec)
+
+MySQL [TestingPrimary]> INSERT INTO testing (test_content) VALUES ('Testing secondary');
+ERROR 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement
+MySQL [TestingPrimary]> Connection to 34.207.173.189 closed by remote host.
+Connection to 34.207.173.189 closed.
+```
+
+logfile_secondary_after_promote.txt
+```
+[ec2-user@ip- ~]$ mysql -h s[secondary db Endpoint] -P 3306 -u admin -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.23 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| TestingPrimary     |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+6 rows in set (0.00 sec)
+
+MySQL [(none)]> use TestingPrimary
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [TestingPrimary]> show tables;
++--------------------------+
+| Tables_in_TestingPrimary |
++--------------------------+
+| testing                  |
++--------------------------+
+1 row in set (0.00 sec)
+
+MySQL [TestingPrimary]> SELECT * FROM testing;
++---------+---------------+
+| test_id | test_content  |
++---------+---------------+
+|       1 | Still testing |
++---------+---------------+
+1 row in set (0.00 sec)
+
+MySQL [TestingPrimary]> INSERT INTO testing (test_content) VALUES ('Testing secondary');
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [TestingPrimary]> SELECT * FROM testing;
++---------+-------------------+
+| test_id | test_content      |
++---------+-------------------+
+|       1 | Still testing     |
+|       2 | Testing secondary |
++---------+-------------------+
+2 rows in set (0.00 sec)
+
+MySQL [TestingPrimary]>
+```
 
 5. Monitor database: 
 - Observe the “DB Connections” to the database and how this metric changes as you connect to the database
