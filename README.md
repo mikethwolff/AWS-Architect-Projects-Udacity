@@ -251,6 +251,11 @@ Outputs:
 1. Create a new RDS Subnet group in the active and standby region using private subnets.
 2. Create a new MySQL, multi-AZ database in the active region
 
+![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/primary-DB-subnetgroups.png)
+
+![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/primary-DB-config.png)
+
+
 * Availability Estimate
 1. Describing the achievable Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for this Multi-AZ, multi-region database.
 
