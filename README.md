@@ -34,4 +34,4 @@ There will be three parts to this project:
 1. Observe the “DB Connections” to the database and how this metric changes as you connect to the database
 2. Observe the “Replication” configuration with your multi-region read replica.
 
-**Solution:** [Design for Availability, Reliability, and Resiliency](https://github.com/mikethwolff/...))
+**Solution:** [Design for Availability, Reliability, and Resiliency](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/README.md))
