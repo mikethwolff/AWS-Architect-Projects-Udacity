@@ -330,7 +330,7 @@ Source: https://aws.amazon.com/blogs/database/amazon-rds-under-the-hood-single-a
 
 logfile_primary.txt
 ```
-[root@ip- ec2-user]# mysql -h [db Endpoint ] -P 3306 -u admin -p
+[root@ip- ec2-user]# mysql -h [ db Endpoint ] -P 3306 -u admin -p
 Enter password:
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MySQL connection id is 131
@@ -388,7 +388,7 @@ MySQL [TestingPrimary]>
 
 logfile_secondary_before_promote.txt
 ```
-[root@ip- ec2-user]# mysql -h [db Endpoint ] -P 3306 -u admin -p
+[root@ip- ec2-user]# mysql -h [ secondary db Endpoint ] -P 3306 -u admin -p
 Enter password:
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MySQL connection id is 119
@@ -440,7 +440,7 @@ Connection to 34.207.173.189 closed.
 
 logfile_secondary_after_promote.txt
 ```
-[ec2-user@ip- ~]$ mysql -h s[secondary db Endpoint] -P 3306 -u admin -p
+[ec2-user@ip- ~]$ mysql -h s[ secondary db Endpoint ] -P 3306 -u admin -p
 Enter password:
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MySQL connection id is 10
