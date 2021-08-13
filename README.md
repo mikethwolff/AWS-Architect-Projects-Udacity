@@ -254,13 +254,13 @@ Outputs:
 
 **Solution:**
 
-![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/primary-DB-subnetgroups.png)
+![alt text](https://github.com/mikethwolff/AWS-Cloud-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/primary-DB-subnetgroups.png)
 
-![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/primary-DB-config.png)
+![alt text](https://github.com/mikethwolff/AWS-Cloud-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/primary-DB-config.png)
 
-![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/secondary-DB-subnetgroups.png)
+![alt text](https://github.com/mikethwolff/AWS-Cloud-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/secondary-DB-subnetgroups.png)
 
-![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/secondary-DB-config.png)
+![alt text](https://github.com/mikethwolff/AWS-Cloud-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/secondary-DB-config.png)
 
 3. Availability Estimate
 - Describing the achievable Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for this Multi-AZ, multi-region database.
@@ -505,7 +505,7 @@ MySQL [TestingPrimary]>
 
 **Solution:**
 
-![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/monitoring_connections.png)
-![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/monitoring_replication.png)
+![alt text](https://github.com/mikethwolff/AWS-Cloud-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/monitoring_connections.png)
+![alt text](https://github.com/mikethwolff/AWS-Cloud-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/monitoring_replication.png)
 
-**Link to project 1 solution:** [Design for Availability, Reliability, and Resiliency](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/README.md))
+**Link to project 1 solution:** [Design for Availability, Reliability, and Resiliency](https://github.com/mikethwolff/AWS-Cloud-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/README.md))
