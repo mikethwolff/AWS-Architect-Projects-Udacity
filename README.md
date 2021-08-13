@@ -16,7 +16,8 @@ There will be three parts to this project:
 - Pick two AWS regions. An active region and a standby region. 
 - Use CloudFormation to create one VPC in each region.
 
-**1. Solution:**
+**Solution:**
+
 vpc.yml
 ```
 Description:  Udacity - Design for Availability, Resilience, and Reliability
@@ -247,27 +248,94 @@ Outputs:
 ```
 
 
-* Highly durable RDS Database:
-1. Create a new RDS Subnet group in the active and standby region using private subnets.
-2. Create a new MySQL, multi-AZ database in the active region
+2. Highly durable RDS Database:
+- Create a new RDS Subnet group in the active and standby region using private subnets.
+- Create a new MySQL, multi-AZ database in the active region
+
+**Solution:**
 
 ![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/primary-DB-subnetgroups.png)
 
 ![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/primary-DB-config.png)
 
+![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/secondary-DB-subnetgroups.png)
 
-* Availability Estimate
-1. Describing the achievable Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for this Multi-AZ, multi-region database.
+![alt text](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/screenshots/secondary-DB-config.png)
 
-* Demonstrate normal usage
-1. Create an EC2 keypair in the region
-2. Launch an Amazon Linux EC2 instance in the active region. Configure the instance to use the VPC's public subnet and security group ("UDARR-Application").
-3. SSH to the instance and connect to the "udacity" database in the RDS instance.
-4. Verify that you can create a table, insert data, and read data from the database.
-5. You have now demonstrated that you can read and write to the primary database
+3. Availability Estimate
+- Describing the achievable Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for this Multi-AZ, multi-region database.
 
-* Monitor database: 
-1. Observe the “DB Connections” to the database and how this metric changes as you connect to the database
-2. Observe the “Replication” configuration with your multi-region read replica.
+**Solution:**
 
-**Solution:** [Design for Availability, Reliability, and Resiliency](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/README.md))
+estimates.txt
+```
+AWS offers various disaster recovery options in the cloud. RPO & RTO depend on what architecture you choose.
+
+Disaster recovery strategies available within AWS can be broadly categorized into four approaches, ranging from the low cost and low complexity of making backups, over pilot light setups, warm standby, to most complex strategies using multiple active Regions. 
+
+Backup & Restore: RPO / RTO: hours; lower priority use cases; Restore data after event; Deploy resources after event; low cost
+Pilot Light: RPO / RTO: 10s of minutes; les stringent RTO & RPO; Core services; Start & scale resources after event; medium cost
+Warm standby: RPO / RTO: Minutes; More stringent RTO & RPO; Business critical services; Scale resources after even; high cost
+Multi-site active / active: RPO / RTO: Real-time; Zero downtime; Near zero loss; Mission critical services; highest cost
+
+Source: https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html
+
+1. Minimum RTO for a single AZ outage
+-------------------------------------------------
+--- 60-120 seconds
+
+The Recovery Time Objective (RTO) is the duration of time and a service level within which a business process must be restored after a disaster in order to avoid unacceptable consequences associated with a break in continuity.
+
+Minimum RTO is the time Amazon needs to automatically switch to a standby replica in another Availability Zone, which takes typically 60-120 seconds.
+
+"... Failover times are typically 60–120 seconds. However, large transactions or a lengthy recovery process can increase failover
+time. When the failover is complete, it can take additional time for the RDS console to reflect the new Availability Zone."
+
+Source: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
+
+
+2. Minimum RTO for a single region outage
+-----------------------------------------------------
+--- 30 minutes up to 1 hour
+
+Minimum RTO for starting up a new Amazon RDS instance and applying all changes since the last backup takes 30 minutes up to 1 hour.
+
+
+3. Minimum RPO for a single AZ outage
+-------------------------------------------------
+--- 5 minutes
+
+Recovery point objective (RPO) describes a period of time in which an enterprise's operations must be restored following a disruptive event, e.g., a cyberattack, natural disaster or communications failure.
+
+"RPO for recovery with an RDS Single-AZ instance failure is typically 5 minutes (the interval required for copying transaction logs to Amazon S3), but it can vary."
+
+
+4. Minimum RPO for a single region outage
+-----------------------------------------------------
+--- vary between 5 minutes and hours
+
+"The RTO timing requires starting up a new Amazon RDS instance and then applying all changes since the last backup. The RPO is typically 5 minutes, but you can find it by calling RDS:describe-db-instances:LatestRestorableTime. This time can vary from 10 minutes to hours, depending on the number of logs that need to be applied. It can only be determined by testing because it depends on the size of the database, the number of changes made since the last backup, and the workload levels on the database. The RDS backups and transaction logs are stored in Amazon S3, so this recovery can occur in any supported Availability Zone in the Region."
+
+Source: https://aws.amazon.com/blogs/database/amazon-rds-under-the-hood-single-az-instance-recovery/
+```
+
+4. Demonstrate normal usage
+- Create an EC2 keypair in the region
+- Launch an Amazon Linux EC2 instance in the active region. Configure the instance to use the VPC's public subnet and security group ("UDARR-Application").
+- SSH to the instance and connect to the "udacity" database in the RDS instance.
+- Verify that you can create a table, insert data, and read data from the database.
+- You have now demonstrated that you can read and write to the primary database
+
+**Solution:**
+
+![alt text]()
+
+5. Monitor database: 
+- Observe the “DB Connections” to the database and how this metric changes as you connect to the database
+- Observe the “Replication” configuration with your multi-region read replica.
+
+**Solution:**
+
+![alt text]()
+
+**Link to project 1 solution:** [Design for Availability, Reliability, and Resiliency](https://github.com/mikethwolff/AWS-Architect-Projects-Udacity/blob/main/Design%20for%20Availability%2C%20Reliability%2C%20and%20Resiliency/README.md))
